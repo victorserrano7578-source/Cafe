@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chelix - El Secreto del Café Frío</title>
+    <!-- Google Fonts: Outfit (modern, tech-like) & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome para iconos modernos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js para visualización de datos de alto impacto -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ==================== HEADER (Estilo Netflix) ==================== -->
+    <header class="main-header">
+        <div class="header-left">
+            <span class="logo">CHELIX</span>
+            <nav class="nav-links">
+                <a href="#" class="active" onclick="showView('home')">Inicio</a>
+                <a href="#" class="disabled-link">Cálculo</a>
+                <a href="#" class="disabled-link">Física</a>
+                <a href="#" class="disabled-link">Termodinámica</a>
+                <a href="#" class="disabled-link">Mi Lista</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <i class="fas fa-search header-icon"></i>
+            <span class="kids-badge">Edades 18-23</span>
+            <i class="fas fa-bell header-icon"></i>
+            <div class="user-avatar">
+                <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Newton" alt="Usuario">
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== CONTENEDOR PRINCIPAL ==================== -->
+    <main class="app-container">
+
+        <!-- ==================== VISTA 1: HOME (CATÁLOGO) ==================== -->
+        <section id="view-home" class="view-section active">
+            
+            <!-- HERO BANNER PRINCIPAL -->
+            <div class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="hero-category"><i class="fas fa-fire-alt"></i> LO MÁS VISTO EN FÍSICA</span>
+                    <h1 class="hero-title">El Secreto del Café Frío</h1>
+                    <p class="hero-subtitle">Basado en la Ley de Enfriamiento de Newton</p>
+                    <p class="hero-description">
+                        Un café hirviendo. Una habitación helada. Y un temporizador que corre sin piedad. Descubre el misterio detrás de la tasa de transferencia térmica y aprende cómo el tiempo enfría tus bebidas... y tus pasiones.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" onclick="showView('simulador')">
+                            <i class="fas fa-play"></i> Simular Ahora
+                        </button>
+                        <button class="btn btn-secondary" onclick="scrollToElement('catalog')">
+                            <i class="fas fa-info-circle"></i> Ver Catálogo
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARRUSEL DE PELÍCULAS (CINTA INTERACTIVA) -->
+            <div id="catalog" class="catalog-section">
+                <h2 class="section-title">Nuevos Lanzamientos Académicos</h2>
+                
+                <div class="carousel-container">
+                    <button class="carousel-control prev" onclick="moveCarousel(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="carousel-track-wrapper">
+                        <div class="carousel-track" id="carousel-track">
+                            
+                            <!-- TARJETA 1: NEWTON'S COOLING LAW -->
+                            <div class="card active-card" onclick="showView('simulador')">
+                                <div class="card-image-placeholder item-coffee">
+                                    <div class="card-glow"></div>
+                                    <i class="fas fa-mug-hot card-main-icon"></i>
+                                    <span class="card-badge red">POPULAR</span>
+                                </div>
+                                <div class="card-details">
+                                    <h3>El Secreto del Café Frío</h3>
+                                    <div class="card-meta">
+                                        <span class="match-percentage">98% Coincidencia</span>
+                                        <span class="year">2026</span>
+                                        <span class="age-rating">18+</span>
+                                    </div>
+                                    <p class="card-summary">La ley térmica del enfriamiento simulada en tiempo real.</p>
+                                    <span class="card-tag"><i class="fas fa-chart-line"></i> Simulación 3D interactiva</span>
+                                </div>
+                            </div>
+
+                            <!-- TARJETA 2: CRECIMIENTO POBLACIONAL -->
+                            <div class="card card-locked">
+                                <div class="card-image-placeholder item-growth">
+                                    <div class="card-glow"></div>
+                                    <i class="fas fa-chart-area card-main-icon"></i>
+                                    <span class="card-badge purple">PRÓXIMAMENTE</span>
+                                </div>
+                                <div class="card-details">
+                                    <h3>Crecimiento Desmedido</h3>
+                                    <div class="card-meta">
+                                        <span class="match-percentage">92% Coincidencia</span>
+                                        <span class="year">Fase 2</span>
+                                        <span class="age-rating">18+</span>
+                                    </div>
+                                    <p class="card-summary">Crecimiento poblacional exponencial y límites de recursos sustentables.</p>
+                                    <span class="card-tag"><i class="fas fa-lock"></i> Próximo Estreno</span>
+                                </div>
+                            </div>
+
+                            <!-- TARJETA 3: TIRO PARABÓLICO -->
+                            <div class="card card-locked">
+                                <div class="card-image-placeholder item-parabolic">
+                                    <div class="card-glow"></div>
+                                    <i class="fas fa-meteor card-main-icon"></i>
+                                    <span class="card-badge blue">PRÓXIMAMENTE</span>
+                                </div>
+                                <div class="card-details">
+                                    <h3>El Salto Mortal</h3>
+                                    <div class="card-meta">
+                                        <span class="match-percentage">89% Coincidencia</span>
+                                        <span class="year">Fase 3</span>
+                                        <span class="age-rating">18+</span>
+                                    </div>
+                                    <p class="card-summary">Modelado parabólico de proyectiles bajo gravedad terrestre.</p>
+                                    <span class="card-tag"><i class="fas fa-lock"></i> Próximo Estreno</span>
+                                </div>
+                            </div>
+
+                            <!-- TARJETA 4: MOVIMIENTO ARMÓNICO SIMPLE -->
+                            <div class="card card-locked">
+                                <div class="card-image-placeholder item-harmonic">
+                                    <div class="card-glow"></div>
+                                    <i class="fas fa-wave-square card-main-icon"></i>
+                                    <span class="card-badge grey">PRÓXIMAMENTE</span>
+                                </div>
+                                <div class="card-details">
+                                    <h3>Oscilaciones del Amor</h3>
+                                    <div class="card-meta">
+                                        <span class="match-percentage">85% Coincidencia</span>
+                                        <span class="year">Fase 4</span>
+                                        <span class="age-rating">18+</span>
+                                    </div>
+                                    <p class="card-summary">Modelando el péndulo y las oscilaciones sinusoidales repetitivas.</p>
+                                    <span class="card-tag"><i class="fas fa-lock"></i> Próximo Estreno</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <button class="carousel-control next" onclick="moveCarousel(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ==================== VISTA 2: DETALLE Y SIMULACIÓN ==================== -->
+        <section id="view-simulador" class="view-section">
+            
+            <div class="sim-header">
+                <button class="btn-back" onclick="showView('home')">
+                    <i class="fas fa-arrow-left"></i> Volver a Chelix
+                </button>
+                <div class="sim-title-container">
+                    <h1 class="sim-title">El Secreto del Café Frío</h1>
+                    <span class="sim-badge"><i class="fas fa-graduation-cap"></i> Ecuaciones Diferenciales Ordinarias</span>
+                </div>
+            </div>
+
+            <div class="sim-layout">
+                
+                <!-- PANEL IZQUIERDO: EXPLICACIÓN Y CONTROLES -->
+                <div class="sim-controls-panel">
+                    
+                    <!-- TAB DE TEORÍA -->
+                    <div class="glass-card math-card">
+                        <h3><i class="fas fa-calculator text-neon-blue"></i> Ley de Enfriamiento de Newton</h3>
+                        <p class="math-intro">
+                            Establece que la rapidez de cambio de la temperatura de un cuerpo es proporcional a la diferencia entre la temperatura del cuerpo y la del medio ambiente.
+                        </p>
+                        
+                        <!-- FÓRMULA ESTILIZADA -->
+                        <div class="formula-box">
+                            <div class="formula-item">
+                                <span class="formula-label">Ecuación Diferencial:</span>
+                                <div class="math-expr">
+                                    <span class="frac"><span>dT</span><span class="bottom">dt</span></span> = k(T - T<sub>m</sub>)
+                                </div>
+                            </div>
+                            <div class="formula-divider"></div>
+                            <div class="formula-item">
+                                <span class="formula-label">Solución Analítica:</span>
+                                <div class="math-expr">
+                                    T(t) = T<sub>m</sub> + (T<sub>0</sub> - T<sub>m</sub>)e<sup>-kt</sup>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- LEYENDA MATEMÁTICA -->
+                        <div class="math-legend">
+                            <div><strong>T(t):</strong> Temp. final</div>
+                            <div><strong>T<sub>0</sub>:</strong> Temp. inicial</div>
+                            <div><strong>T<sub>m</sub>:</strong> Temp. ambiente</div>
+                            <div><strong>t:</strong> Tiempo (min)</div>
+                            <div><strong>k:</strong> Constante</div>
+                        </div>
+                    </div>
+
+                    <!-- CASO PRÁCTICO INTERACTIVO -->
+                    <div class="glass-card case-card">
+                        <div class="case-header" onclick="toggleCaseDetails()">
+                            <h3><i class="fas fa-lightbulb text-neon-purple"></i> Caso Práctico Calibrador</h3>
+                            <span class="badge-accent">Interactivos 34°C → 28°C</span>
+                        </div>
+                        <div class="case-content" id="case-content-details">
+                            <p class="case-desc">
+                                <strong>Contexto:</strong> Una taza de café inicia a <strong>34°C</strong> ($T_0$) en un cuarto a <strong>20°C</strong> ($T_m$). Después de <strong>15 minutos</strong> ($t$) baja a <strong>28°C</strong>.
+                            </p>
+                            <div class="case-math">
+                                <div class="math-step">
+                                    <span>Para calcular la constante <strong>k</strong>:</span>
+                                    <code>e<sup>-15k</sup> = (28 - 20) / (34 - 20) = 8 / 14</code>
+                                </div>
+                                <div class="math-step">
+                                    <code>k = -ln(8/14) / 15 &approx; 0.0373 min<sup>-1</sup></code>
+                                </div>
+                            </div>
+                            <button class="btn btn-accent btn-sm" onclick="applyPracticalCase()">
+                                <i class="fas fa-magic"></i> Cargar Caso Práctico
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- SLIDERS DE CONTROL -->
+                    <div class="glass-card sliders-card">
+                        <h3><i class="fas fa-sliders-h text-neon-blue"></i> Parámetros de la Simulación</h3>
+                        
+                        <!-- SLIDER T0 -->
+                        <div class="slider-group">
+                            <div class="slider-info">
+                                <label for="input-t0"><i class="fas fa-thermometer-empty text-red"></i> Temp. Inicial (T<sub>0</sub>)</label>
+                                <span class="slider-val" id="val-t0">34 °C</span>
+                            </div>
+                            <input type="range" id="input-t0" min="20" max="100" value="34" class="range-slider">
+                        </div>
+
+                        <!-- SLIDER TM -->
+                        <div class="slider-group">
+                            <div class="slider-info">
+                                <label for="input-tm"><i class="fas fa-wind text-blue"></i> Temp. Ambiente (T<sub>m</sub>)</label>
+                                <span class="slider-val" id="val-tm">20 °C</span>
+                            </div>
+                            <input type="range" id="input-tm" min="0" max="40" value="20" class="range-slider">
+                        </div>
+
+                        <!-- SLIDER TIME -->
+                        <div class="slider-group">
+                            <div class="slider-info">
+                                <label for="input-time"><i class="fas fa-clock text-green"></i> Tiempo transcurrido (t)</label>
+                                <span class="slider-val" id="val-time">15 min</span>
+                            </div>
+                            <input type="range" id="input-time" min="0" max="120" value="15" class="range-slider">
+                        </div>
+
+                        <!-- SELECTOR DE CONSTANTE -->
+                        <div class="k-control">
+                            <label>Constante de Enfriamiento (k):</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="k-value" value="0.05" checked onchange="updateK(0.05)">
+                                    <span>Estándar (k = 0.05)</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="k-value" value="0.0373" onchange="updateK(0.0373)">
+                                    <span>Caso Práctico (k &approx; 0.0373)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- PANEL DERECHO: VISUALIZACIÓN EN TIEMPO REAL -->
+                <div class="sim-visuals-panel">
+                    
+                    <!-- DISPLAY DIGITAL DE RESULTADO -->
+                    <div class="glass-card result-card">
+                        <div class="result-details">
+                            <span class="result-label">Temperatura final T(t)</span>
+                            <div class="result-temp-wrapper">
+                                <span class="result-temp" id="display-final-temp">28.0</span><span class="result-unit">°C</span>
+                            </div>
+                            <p class="result-status" id="display-status-text">Tu café está a temperatura ideal para tomar.</p>
+                        </div>
+
+                        <!-- COFFEE CUP SVG ANIMADO -->
+                        <div class="coffee-cup-container">
+                            <svg id="coffee-cup" viewBox="0 0 100 100" width="120" height="120">
+                                <!-- Vapores animados -->
+                                <g id="steam-group">
+                                    <path class="steam steam-1" d="M 45 40 Q 40 30 45 20 Q 50 10 45 0" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round"/>
+                                    <path class="steam steam-2" d="M 52 40 Q 57 30 52 20 Q 47 10 52 0" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round"/>
+                                    <path class="steam steam-3" d="M 60 40 Q 55 30 60 20 Q 65 10 60 0" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round"/>
+                                </g>
+                                <!-- Taza -->
+                                <path id="cup-body" d="M 30 45 L 35 85 Q 36 90 41 90 L 59 90 Q 64 90 65 85 L 70 45 Z" fill="#bc13fe" stroke="#0ff" stroke-width="2"/>
+                                <!-- Asa de la taza -->
+                                <path id="cup-handle" d="M 70 52 Q 85 55 82 68 Q 80 80 70 78" fill="none" stroke="#0ff" stroke-width="3.5" stroke-linecap="round"/>
+                                <!-- Líquido / Café -->
+                                <ellipse id="coffee-surface" cx="50" cy="45" rx="19.5" ry="3" fill="#3d2314"/>
+                                <!-- Plato -->
+                                <path d="M 20 92 L 80 92 Q 85 92 85 95 L 15 95 Q 15 92 20 92 Z" fill="#2d2d35"/>
+                            </svg>
+                            <span class="liquid-badge" id="cup-color-label">Caliente</span>
+                        </div>
+                    </div>
+
+                    <!-- GRÁFICO EXPONENCIAL -->
+                    <div class="glass-card chart-card">
+                        <div class="chart-header">
+                            <h3><i class="fas fa-chart-line text-neon-purple"></i> Curva de Enfriamiento Exponencial</h3>
+                            <span class="chart-info-tip" title="El punto parpadeante muestra la temperatura actual en el tiempo t seleccionado."><i class="fas fa-info-circle"></i> Info</span>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="coolingChart"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ==================== PIE DE PÁGINA ==================== -->
+    <footer class="main-footer">
+        <p>&copy; 2026 Chelix Academia. Diseñado con <i class="fas fa-heart text-neon-purple animate-pulse"></i> para la posteridad física.</p>
+        <p class="footer-subtext">Proyecto Académico sobre Ecuaciones Diferenciales Ordinarias aplicadas a la Vida Real.</p>
+    </footer>
+
+    <!-- Script principal de la aplicación -->
+    <script src="script.js"></script>
+</body>
+</html>
